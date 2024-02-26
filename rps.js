@@ -32,6 +32,24 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = prompt("Enter rock, paper, or scissors").toLowerCase();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function playGame(){
+    let playerScore = 0;
+    let computerScore = 0;
+    let gamesPlayed = 0;
+    while (gamesPlayed < 5){
+        const playerSelection = prompt("Enter rock, paper, or scissors").toLowerCase();
+        const computerSelection = getComputerChoice();
+        let result = playRound(playerSelection, computerSelection);
+        console.log(result)
+        if (result.includes('player wins!')){
+            ++playerScore
+        }
+        if (result.includes('computer wins!')){
+            ++computerScore
+        }
+        console.log(`The score is Player: ${playerScore} Computer: ${computerScore}`)
+        ++gamesPlayed
+    }
+}
+
+console.log(playGame());
